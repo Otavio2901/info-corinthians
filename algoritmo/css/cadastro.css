@@ -1,0 +1,86 @@
+*{
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+}
+body{
+    background-color: rgba(0, 0, 0, 0.877);
+    height: 100vh;
+}
+
+.header{
+    display: flex;
+    justify-content: space-around;
+    /* padding: 10px; */
+    height: 100px;
+    align-items: center;
+}
+
+.header h1{
+    color: white;
+}
+
+.header button {
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    padding: 10px 30px;
+    border-radius: 20px;  
+}
+
+.header a{
+    text-decoration: none;
+}
+
+.botaoVermelho button{
+    background-color: red;
+}
+
+.botaoPreto button{
+    background-color: black;
+    color: white;
+}
+.logoCorinthians img{
+    position: absolute;
+    width: 50px;
+    top: 35px;
+    left: 40px;
+    height: auto;
+}
+
+.main-content {
+    height: 100%;
+}
+
+.main {
+    flex: 1;
+    background-image: url(fundo.jpg);
+    height: calc(100% - 100px);  
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.main div{
+background-color: rgba(0, 0, 0, 0.877);
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+padding: 100px;
+border-radius: 20px;
+color: white;
+}
+
+.main input{
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    
+}
+.main button{
+    background-color: red;
+    border-radius: 10px;
+    padding: 15px ;
+    width: 100%;
+    border-radius: 10px;
+}
