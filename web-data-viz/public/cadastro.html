@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <title>Info-Timão | Cadastro</title>
+</head>
+<body>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Info-Timão</h1>
+            <div class="botaoPreto">
+                <a href="index.html"><button>Início</button></a>
+            </div>
+            <a href="login.html"><button>Login</button></a>
+            <div class="botaoVermelho">
+                <a href="cadastro.html"><button>Cadastrar</button></a>
+            </div>
+            <div class="logoCorinthians">
+                <img src="img/Corinthians_simbolo.png" alt="logo">
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="mainha">
+                <h1>Cadastrar</h1>
+                <input type="text" placeholder="Nome" id="ipt_nome">
+                <br><br>
+                <input type="text" placeholder="E-mail" id="ipt_email">
+                <br><br>
+                <input type="password" placeholder="Senha" id="ipt_senha">
+                <br><br>
+                <input type="text" placeholder="Jogador Favorito" id="ipt_jogador">
+                <br><br>
+                <button onclick="cadastrar()">Cadastrar</button>
+                <div id="div_mensagem"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<script>
+function cadastrar() {
+    let nome = ipt_nome.value;
+    let email = ipt_email.value;
+    let senha = ipt_senha.value;
+    let jogador = ipt_jogador.value;
+
+    div_mensagem.innerHTML = "";
+
+    if (nome == "" || email == "" || senha == "" || jogador == "") {
+        div_mensagem.style.color = "red";
+        div_mensagem.innerHTML = "⚠️ Preencha todos os campos para continuar!";
+    } 
+    else if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+        div_mensagem.style.color = "red";
+        div_mensagem.innerHTML = "⚠️ Por favor, insira um e-mail válido.";
+    } 
+    else if (senha.length < 6) {
+        div_mensagem.style.color = "red";
+        div_mensagem.innerHTML = "⚠️ A senha deve ter pelo menos 6 caracteres.";
+    } 
+    else {
+        div_mensagem.style.color = "green";
+        div_mensagem.innerHTML = `✅ Cadastro realizado! Bem-vindo ao bando de loucos, ${nome}!`;
+        
+    }
+
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nome,
+        emailServer: email,
+        senhaServer: senha,
+        jogadorServer : jogador,
+          }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          // let cardErro = document.getElementById("cardErro")
+          // cardErro.style.display = "block";
+
+          div_mensagem.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          // finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+
+    return false;
+  }
+</script>

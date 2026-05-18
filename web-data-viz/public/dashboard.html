@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Corinthians</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+
+<body>
+
+    <div class="main-content">
+
+        <div class="sidebar">
+
+            <div class="logo">
+
+                <img src="img/Corinthians_simbolo.png">
+
+            </div>
+
+            <div class="menu_botao">
+
+                <a href="avaliacao.html">
+                    <button onclick="avaliacao()">Avaliação</button>
+                </a>
+
+                <a href="index.html">
+                    <button onclick="inicio()">Início</button>
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="conteudo">
+
+        <h1>Dashboard</h1>
+
+        <p>
+            Visão geral das avaliações da Fiel Torcida
+        </p>
+        <div class="kpis">
+
+            <div class="card">
+
+                <h2>Total de Avaliações</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Média das Notas</h2>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Comentários</h2>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    const config = {
+  type: 'pie',
+  data: data,
+};
+    const data = {
+  labels: [
+    'Red',
+    'Blue',
+    'Yellow'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
+</script>

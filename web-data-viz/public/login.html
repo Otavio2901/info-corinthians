@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css\login.css">
+</head>
+<body>
+       <div class="main-content">
+        <div class="header">
+            <h1>Info-Timão</h1>
+            <div class="botaoPreto">
+                 <a href="index.html"><button>Inicio</button></a>
+            </div>
+            <a href="login.html"><button>Login</button></a>
+            <div class="botaoVermelho">
+                <a href="cadastro.html"><button>Cadastrar</button></a>
+            </div>
+            <div class="logoCorinthians">
+                <img src="img/Corinthians_simbolo.png" alt="logo">
+            </div>
+        </div>
+    <div class="main">
+        <div class="mainha">
+            <h1>Login</h1>
+            <br><br>
+            <input type="text" placeholder="email" id="ipt_email">
+            <br><br>
+            <input type="password" placeholder="senha" id="ipt_senha">
+            <br><br>
+            <button onclick="login()">Login</button>
+            <div id="div_mensagem"></div>
+        </div>
+  </div>
+</body>
+</html>
+<script>
+
+
+    div_mensagem.innerHTML = "";
+    
+    function login(){
+
+        let emailVar = ipt_email.value;
+        let senhaVar = ipt_senha.value;
+
+        if ( emailVar == "" || senhaVar == "") {
+            div_mensagem.style.color = "red";
+            div_mensagem.innerHTML = "⚠️ Preencha todos os campos para continuar!";
+        } 
+        else if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1) {
+            div_mensagem.style.color = "red";
+            div_mensagem.innerHTML = "⚠️ Por favor, insira um e-mail válido.";
+        } 
+        else if (senhaVar.length < 6) {
+            div_mensagem.style.color = "red";
+            div_mensagem.innerHTML = "⚠️ A senha deve ter pelo menos 6 caracteres.";
+        } 
+        else {
+            div_mensagem.style.color = "green";
+            div_mensagem.innerHTML = `✅ Login realizado! Redirecionando para as avaliações}!`;
+            
+            setTimeout(() => {
+                window.location.href = "avaliacao.html";
+            }, 2000);
+        }
+     fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        
+          }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          // let cardErro = document.getElementById("cardErro")
+          // cardErro.style.display = "block";
+
+          div_mensagem.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          // finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+
+    return false;
+  }
+</script>
