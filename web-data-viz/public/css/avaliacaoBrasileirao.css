@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.877);
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    /* padding: 10px; */
+    height: 100px;
+    align-items: center;
+}
+
+.header h1 {
+    color: white;
+}
+
+.header button {
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+.botaoVermelho button {
+    background-color: red;
+    font-size: 20px;
+}
+
+.botaoPreto button {
+    background-color: black;
+    color: white;
+
+}
+
+.logoCorinthians img {
+    position: absolute;
+    width: 50px;
+    top: 35px;
+    left: 40px;
+    height: auto;
+}
+
+.main-content {
+    min-height: 100vh;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    background-image: url(../img/ChatGPT\ Image\ 12\ de\ mai.\ de\ 2026\,\ 12_44_07.png);
+    height: fit-content;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.main h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    color: white;
+}

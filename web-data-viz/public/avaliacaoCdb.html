@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação Copa do Brasil</title>
+    <link rel="stylesheet" href="css/avaliacaoCdb.css">
+</head>
+
+<body>
+
+    <div class="main-content">
+
+        <div class="header">
+            <h1>Info-Timão</h1>
+
+            <div class="botaoPreto">
+                <a href="index.html">
+                    <button>Inicio</button>
+                </a>
+            </div>
+
+            <a href="login.html">
+                <button>Login</button>
+            </a>
+
+            <div class="botaoVermelho">
+                <a href="cadastro.html">
+                    <button>Cadastrar</button>
+                </a>
+            </div>
+
+            <div class="botaoBranco">
+                <a href="avaliacao.html">
+                    <button>Avaliação</button>
+                </a>
+            </div>
+
+            <div class="logoCorinthians">
+                <img src="img/Corinthians_simbolo.png" alt="logo">
+            </div>
+        </div>
+
+        <div class="main">
+
+            <h1>Avaliação Copa do Brasil</h1>
+
+            <div class="avd_copaBrasil">
+                <p>Copa do Brasil:</p>
+
+                <select id="select_partida2">
+
+                    <option value="">Selecione</option>
+
+                    <option value="30/04/2025 - Grêmio Novo Horizontino - Jogo Ida">
+                        30/04/2025 - Grêmio Novo Horizontino - Jogo Ida
+                    </option>
+
+                    <option value="21/05/2025 - Grêmio Novo Horizontino - Jogo Volta">
+                        21/05/2025 - Grêmio Novo Horizontino - Jogo Volta
+                    </option>
+
+                    <option value="30/07/2025 - Palmeiras - Jogo Ida">
+                        30/07/2025 - Palmeiras - Jogo Ida
+                    </option>
+
+                    <option value="06/08/2025 - Palmeiras - Jogo Volta">
+                        06/08/2025 - Palmeiras - Jogo Volta
+                    </option>
+
+                    <option value="27/08/2025 - Athletico Paranaense - Jogo Ida">
+                        27/08/2025 - Athletico Paranaense - Jogo Ida
+                    </option>
+
+                    <option value="10/09/2025 - Athletico Paranaense - Jogo Volta">
+                        10/09/2025 - Athletico Paranaense - Jogo Volta
+                    </option>
+
+                    <option value="10/12/2025 - Cruzeiro - Jogo Ida">
+                        10/12/2025 - Cruzeiro - Jogo Ida
+                    </option>
+
+                    <option value="14/12/2025 - Cruzeiro - Jogo Volta">
+                        14/12/2025 - Cruzeiro - Jogo Volta
+                    </option>
+
+                    <option value="17/12/2025 - Vasco - Jogo Ida">
+                        17/12/2025 - Vasco - Jogo Ida
+                    </option>
+
+                    <option value="21/12/2025 - Vasco - Jogo Volta">
+                        21/12/2025 - Vasco - Jogo Volta
+                    </option>
+
+                </select>
+            </div>
+
+            <div class="comentario">
+                <p>Deixe seu comentário sobre o que achou desta partida:</p>
+
+                <textarea id="txt_comentario" placeholder="Digite seu comentário aqui"></textarea>
+            </div>
+
+            <div class="container-botoes-copaDoBrasil">
+
+                <p>Avaliação Partida Copa do Brasil:</p>
+
+                <select id="select_avaliacao_copaBrasil" class="select-avaliacao">
+
+                    <option value="">Selecione sua avaliação</option>
+
+                    <option value="Muito Bom">🟢 Muito Bom</option>
+
+                    <option value="Bom">🟩 Bom</option>
+
+                    <option value="Mediana">🟨 Mediana</option>
+
+                    <option value="Ruim">🟥 Ruim</option>
+
+                    <option value="Muito Ruim">⬛ Muito Ruim</option>
+
+                </select>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="botoa_cadastrar">
+        <button onclick="cadastrar()">Cadastrar Avaliação</button>
+    </div>
+
+
+</body>
+
+</html>
+<script>
+    
+function cadastrar() {
+
+        let partida = select_partida.value
+
+        let comentario_1 = comentario1.value
+
+        let partida2 = select_partida2.value
+
+        let comentario2 = txt_comentario.value
+
+        let avaliacao_brasileirao = select_avaliacao_copa.value
+
+        let avaliacao_copaDoBrasil = select_avaliacao_copaBrasil.value
+
+        if (partida == "") {
+            alert("Selecione uma partida do Brasileirão")
+            return
+        }
+        if (comentario_1.trim() == "") {
+            alert("Digite um comentário da partida do Brasileirão Selecionada")
+            return
+        }
+        if (partida2 == "") {
+            alert("Selecione uma Partida da Copa do Brasil")
+            return
+        }
+        if (comentario2.trim() == "") {
+            alert("Digite um comentário da partida da Copa do Brasil Selecionada ")
+            return
+        }
+        if (avaliacao_brasileirao == "") {
+            alert("Selecione uma avaliação sobre a partida do Brasileirão")
+            return
+        }
+        if (avaliacao_copaDoBrasil == "") {
+            alert("Selecione uma avaliação sobre a partida da Copa do Brasil")
+            return
+        }
+        else {
+            alert("Avaliação enviada com sucesso!")
+
+            console.log(`
+        Partida: ${partida}
+        Comentário: ${comentario}
+        Nota: ${notaSelecionada}
+    `)
+        }
+    }
+</script>

@@ -1,200 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/avaliação.css">
-    <title>Document</title>
+    <title>Avaliação</title>
 </head>
 
 <body>
+
     <div class="main-content">
+
         <div class="header">
             <h1>Info-Timão</h1>
+
             <div class="botaoPreto">
-                <a href="index.html"><button>Inicio</button></a>
+                <a href="index.html">
+                    <button>Inicio</button>
+                </a>
             </div>
-            <a href="login.html"><button>Login</button></a>
+
+            <a href="login.html">
+                <button>Login</button>
+            </a>
+
             <div class="botaoVermelho">
-                <a href="cadastro.html"><button>Cadastrar</button></a>
+                <a href="cadastro.html">
+                    <button>Cadastrar</button>
+                </a>
             </div>
+
             <div class="botaoBranco">
-                <a href="avaliacao.html"><button>Avaliação</button></a>
+                <a href="avaliacao.html">
+                    <button>Avaliação</button>
+                </a>
             </div>
+
             <div class="logoCorinthians">
-                <img src="img/Corinthians_simbolo.png" alt="logo">
+                <img src="img/Corinthians_simbolo.png" alt="Logo Corinthians">
             </div>
         </div>
+
         <div class="main">
             <h1>Deixe sua avaliação sobre a partida do Corinthians 🦅</h1>
-            <div class="adversario_dta">
+
+            <div class="brasileirao">
                 <p>Brasileirão:</p>
-                <select id="select_partida">
-                    <option value="">Selecione</option>
-                    <option value="30/03/2025 - Bahia">30/03/2025 - Bahia</option>
-                    <option value="05/04/2025 - Vasco">05/04/2025 - Vasco</option>
-                    <option value="12/04/2025 - Palmeiras">12/04/2025 - Palmeiras</option>
-                    <option value="16/04/2025 - Fluminense">16/04/2025 - Fluminense</option>
-                    <option value="19/04/2025 - Sport">19/04/2025 - Sport</option>
-                    <option value="27/04/2025 - Flamengo">27/04/2025 - Flamengo</option>
-                    <option value="03/05/2025 - Internacional">03/05/2025 - Internacional</option>
-                    <option value="10/05/2025 - Mirassol">10/05/2025 - Mirassol</option>
-                    <option value="18/05/2025 - Santos">18/05/2025 - Santos</option>
-                    <option value="24/05/2025 - Atlético-MG">24/05/2025 - Atlético-MG</option>
-                    <option value="01/06/2025 - Vitória">01/06/2025 - Vitória</option>
-                    <option value="12/06/2025 - Grêmio">12/06/2025 - Grêmio</option>
-                    <option value="13/07/2025 - Red Bull Bragantino">13/07/2025 - Red Bull Bragantino</option>
-                    <option value="16/07/2025 - Ceará">16/07/2025 - Ceará</option>
-                    <option value="19/07/2025 - São Paulo">19/07/2025 - São Paulo</option>
-                    <option value="23/07/2025 - Cruzeiro">23/07/2025 - Cruzeiro</option>
-                    <option value="26/07/2025 - Botafogo">26/07/2025 - Botafogo</option>
-                    <option value="03/08/2025 - Fortaleza">03/08/2025 - Fortaleza</option>
-                    <option value="11/08/2025 - Juventude">11/08/2025 - Juventude</option>
-                    <option value="16/08/2025 - Bahia">16/08/2025 - Bahia</option>
-                    <option value="24/08/2025 - Vasco da Gama">24/08/2025 - Vasco da Gama</option>
-                    <option value="31/08/2025 - Palmeiras">31/08/2025 - Palmeiras</option>
-                    <option value="13/09/2025 - Fluminense">13/09/2025 - Fluminense</option>
-                    <option value="21/09/2025 - Sport">21/09/2025 - Sport</option>
-                    <option value="28/09/2025 - Flamengo">28/09/2025 - Flamengo</option>
-                    <option value="01/10/2025 - Internacional">01/10/2025 - Internacional</option>
-                    <option value="04/10/2025 - Mirassol">04/10/2025 - Mirassol</option>
-                    <option value="15/10/2025 - Santos">15/10/2025 - Santos</option>
-                    <option value="18/10/2025 - Atlético-MG">18/10/2025 - Atlético-MG</option>
-                    <option value="25/10/2025 - Vitória">25/10/2025 - Vitória</option>
-                    <option value="02/11/2025 - Grêmio">02/11/2025 - Grêmio</option>
-                    <option value="05/11/2025 - Red Bull Bragantino">05/11/2025 - Red Bull Bragantino</option>
-                    <option value="09/11/2025 - Ceará">09/11/2025 - Ceará</option>
-                    <option value="20/11/2025 - São Paulo">20/11/2025 - São Paulo</option>
-                    <option value="23/11/2025 - Cruzeiro">23/11/2025 - Cruzeiro</option>
-                    <option value="30/11/2025 - Botafogo">30/11/2025 - Botafogo</option>
-                    <option value="03/12/2025 - Fortaleza">03/12/2025 - Fortaleza</option>
-                    <option value="07/12/2025 - Juventude">07/12/2025 - Juventude</option>
-                </select>
+
+                <img src="img/brasileirao.jpg" alt="Brasileirão">
+
+                <button onclick="window.location.href='avaliacaoBrasileirao.html'">
+                    Avaliar Partida do Brasileirão
+                </button>
             </div>
-            <div class="comentario">
-                <p>Deixe seu comentario sobre oque achou desta partida:</p>
-                <textarea id="comentario1" placeholder="Digite seu comentario aqui"></textarea>
-            </div>
-            <div class="avd_copaBrasil">
+
+            <div class="copa-do-brasil">
                 <p>Copa do Brasil:</p>
-                <select id="select_partida2">
-                    <option value="">Selecione</option>
-                    <option value="30/04/2025 - Grêmio Novo Horizontino - Jogo Ida">
-                        30/04/2025 - Grêmio Novo Horizontino - Jogo Ida
-                    </option>
-                    <option value="21/05/2025 - Grêmio Novo Horizontino - Jogo Volta">
-                        21/05/2025 - Grêmio Novo Horizontino - Jogo Volta
-                    </option>
-                    <option value="30/07/2025 - Palmeiras - Jogo Ida">
-                        30/07/2025 - Palmeiras - Jogo Ida
-                    </option>
-                    <option value="06/08/2025 - Palmeiras - Jogo Volta">
-                        06/08/2025 - Palmeiras - Jogo Volta
-                    </option>
-                    <option value="27/08/2025 - Athletico Paranaense - Jogo Ida">
-                        27/08/2025 - Athletico Paranaense - Jogo Ida
-                    </option>
-                    <option value="10/09/2025 - Athletico Paranaense - Jogo Volta">
-                        10/09/2025 - Athletico Paranaense - Jogo Volta
-                    </option>
-                    <option value="10/12/2025 - Cruzeiro - Jogo Ida">
-                        10/12/2025 - Cruzeiro - Jogo Ida
-                    </option>
-                    <option value="14/12/2025 - Cruzeiro - Jogo Volta">
-                        14/12/2025 - Cruzeiro - Jogo Volta
-                    </option>
-                    <option value="17/12/2025 - Vasco - Jogo Ida">
-                        17/12/2025 - Vasco - Jogo Ida
-                    </option>
-                    <option value="21/12/2025 - Vasco - Jogo Volta">
-                        21/12/2025 - Vasco - Jogo Volta
-                    </option>
-                </select>
-            </div>
-            <div class="comentario">
-                <p>Deixe seu comentario sobre oque achou desta partida:</p>
-                <textarea id="txt_comentario" placeholder="Digite seu comentario aqui"></textarea>
-            </div>
-            <div class="container-botoes-brasileirao">
-                <p>Avaliação Partida Brasileirão:</p>
-                <select id="select_avaliacao_copa" class="select-avaliacao">
-                    <option value="">Selecione sua avaliação</option>
-                    <option value="Muito Bom">🟢 Muito Bom</option>
-                    <option value="Bom">🟩 Bom</option>
-                    <option value="Mediana">🟨 Mediana</option>
-                    <option value="Ruim">🟥 Ruim</option>
-                    <option value="Muito Ruim">⬛ Muito Ruim</option>
-                </select>
-            </div>
-            <div class="container-botoes-copaDoBrasil">
-                <p>Avaliação Partida Copa do Brasil:</p>
-                <select id="select_avaliacao_copaBrasil" class="select-avaliacao">
-                    <option value="">Selecione sua avaliação</option>
-                    <option value="Muito Bom">🟢 Muito Bom</option>
-                    <option value="Bom">🟩 Bom</option>
-                    <option value="Mediana">🟨 Mediana</option>
-                    <option value="Ruim">🟥 Ruim</option>
-                    <option value="Muito Ruim">⬛ Muito Ruim</option>
-                </select>
-            </div>
-            <br><br>
-            <div class="botoa_cadastrar">
-                <button onclick="cadastrar()">Cadastrar Avaliação</button>
+
+                <img src="img/copa_do_brasil_1995.jpg" alt="Copa do Brasil">
+
+                <button onclick="window.location.href='avaliacaoCdb.html'">
+                    Avaliar Partida da Copa do Brasil
+                </button>
             </div>
         </div>
+
     </div>
+
 </body>
 
 </html>
+
 <script>
 
-    function cadastrar() {
-
-        let partida = select_partida.value
-
-        let comentario_1 = comentario1.value
-
-        let partida2 = select_partida2.value
-
-        let comentario2 = txt_comentario.value
-
-        let avaliacao_brasileirao = select_avaliacao_copa.value
-
-        let avaliacao_copaDoBrasil = select_avaliacao_copaBrasil.value
-
-        if (partida == "") {
-            alert("Selecione uma partida do Brasileirão")
-            return
-        }
-        if (comentario_1.trim() == "") {
-            alert("Digite um comentário da partida do Brasileirão Selecionada")
-            return
-        }
-        if (partida2 == "") {
-            alert("Selecione uma Partida da Copa do Brasil")
-            return
-        }
-        if (comentario2.trim() == "") {
-            alert("Digite um comentário da partida da Copa do Brasil Selecionada ")
-            return
-        }
-        if (avaliacao_brasileirao == "") {
-            alert("Selecione uma avaliação sobre a partida do Brasileirão")
-            return
-        }
-        if (avaliacao_copaDoBrasil == "") {
-            alert("Selecione uma avaliação sobre a partida da Copa do Brasil")
-            return
-        }
-        else {
-            alert("Avaliação enviada com sucesso!")
-
-            console.log(`
-        Partida: ${partida}
-        Comentário: ${comentario}
-        Nota: ${notaSelecionada}
-    `)
-        }
-    }
 </script>
