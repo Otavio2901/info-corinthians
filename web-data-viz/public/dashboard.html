@@ -75,36 +75,41 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
+
     const ctx = document.getElementById('grafico');
 
-    const data = {
-        labels: ['Jan', 'Fev', 'Mar'],
-        datasets: [{
-            label: 'Vendas',
-            data: [10, 20, 15],
-            borderColor: 'blue',
-            tension: 0.4
-        }]
-    };
+    new Chart(ctx, {
+        type: 'pie',
 
-    // Configuração GLOBAL
-    Chart.defaults.interaction.mode = 'nearest';
+        data: {
+            labels: [
+                'Muito Bom',
+                'Bom',
+                'Mediana',
+                'Ruim',
+                'Muito Ruim'
+            ],
 
-    // Usa o modo nearest
-    const chartInteractionModeNearest = new Chart(ctx, {
-        type: 'line',
-        data: data
-    });
+            datasets: [{
+                label: 'Resultados',
 
-    // Outro gráfico usando modo index
+                data: [30, 25, 20, 15, 10],   
+            
+            
+            backgroundColor: [
+            '#00C853', // Muito Bom
+            '#64DD17', // Bom
+            '#FFD600', // Mediana
+            '#FF6D00', // Ruim
+            '#D50000'  // Muito Ruim
+            ],
 
-    const chartDifferentInteractionMode = new Chart(ctx, {
-        type: 'line',
-        data: data,
+                borderWidth: 1
+            }]
+        },
+
         options: {
-            interaction: {
-                mode: 'index'
-            }
+            responsive: true
         }
     });
 
