@@ -124,13 +124,11 @@
             </div>
 
         </div>
-
+        <br><br>
+            <div class="botao_cadastrar">
+                <button onclick="cadastrar()">Cadastrar Avaliação</button>
+            </div>
     </div>
-
-    <div class="botoa_cadastrar">
-        <button onclick="cadastrar()">Cadastrar Avaliação</button>
-    </div>
-
 
 </body>
 
@@ -139,26 +137,12 @@
     
 function cadastrar() {
 
-        let partida = select_partida.value
-
-        let comentario_1 = comentario1.value
-
         let partida2 = select_partida2.value
 
         let comentario2 = txt_comentario.value
 
-        let avaliacao_brasileirao = select_avaliacao_copa.value
-
         let avaliacao_copaDoBrasil = select_avaliacao_copaBrasil.value
 
-        if (partida == "") {
-            alert("Selecione uma partida do Brasileirão")
-            return
-        }
-        if (comentario_1.trim() == "") {
-            alert("Digite um comentário da partida do Brasileirão Selecionada")
-            return
-        }
         if (partida2 == "") {
             alert("Selecione uma Partida da Copa do Brasil")
             return
@@ -167,17 +151,15 @@ function cadastrar() {
             alert("Digite um comentário da partida da Copa do Brasil Selecionada ")
             return
         }
-        if (avaliacao_brasileirao == "") {
-            alert("Selecione uma avaliação sobre a partida do Brasileirão")
-            return
-        }
         if (avaliacao_copaDoBrasil == "") {
             alert("Selecione uma avaliação sobre a partida da Copa do Brasil")
             return
         }
         else {
             alert("Avaliação enviada com sucesso!")
-
+              setTimeout(() => {
+            window.location.href = "dashboard.html";
+          }, "1000");
             console.log(`
         Partida: ${partida}
         Comentário: ${comentario}

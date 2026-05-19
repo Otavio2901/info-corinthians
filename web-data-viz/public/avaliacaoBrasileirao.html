@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="main">
-            <h1>Deixe sua avaliação sobre a partida do Corinthians 🦅</h1>
+            <h1>Avalie a Partida do Brasileirão:</h1>
             <div class="adversario_dta">
                 <p>Brasileirão:</p>
                 <select id="select_partida">
@@ -85,7 +85,44 @@
                     <option value="Muito Ruim">⬛ Muito Ruim</option>
                 </select>
             </div>
-
+            <br><br>
+            <div class="botao_cadastrar">
+               <button onclick="cadastrar()">Cadastrar Avaliação</button>
             </div>
+        </div>
 </body>
 </html>
+<script>function cadastrar() {
+
+        let partida = select_partida.value
+
+        let comentario_1 = comentario1.value
+
+        let avaliacao_brasileirao = select_avaliacao_copa.value
+
+        if (partida == "") {
+            alert("Selecione uma partida do Brasileirão")
+            return
+        }
+        if (comentario_1.trim() == "") {
+            alert("Digite um comentário da partida do Brasileirão Selecionada")
+            return
+        }
+        if (avaliacao_brasileirao == "") {
+            alert("Selecione uma avaliação sobre a partida da Copa do Brasil")
+            return
+        }
+        else {
+            alert("Avaliação enviada com sucesso!")
+              setTimeout(() => {
+            window.location.href = "dashboard.html";
+          }, "1000");
+
+            console.log(`
+        Partida: ${partida}
+        Comentário: ${comentario}
+        Nota: ${notaSelecionada}
+    `)
+        }
+    }
+</script>

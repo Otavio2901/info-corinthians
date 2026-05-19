@@ -95,9 +95,10 @@ body{
 }
 .kpis{
     display: flex;
-    gap: 30px;
+    gap: 80px;
     justify-content: center;
     align-items: center;
+    height: 200px;
 
 }
 
