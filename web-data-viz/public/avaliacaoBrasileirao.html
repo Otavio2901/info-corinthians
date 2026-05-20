@@ -112,17 +112,46 @@
             alert("Selecione uma avaliação sobre a partida da Copa do Brasil")
             return
         }
-        else {
-            alert("Avaliação enviada com sucesso!")
-              setTimeout(() => {
-            window.location.href = "dashboard.html";
-          }, "1000");
+         fetch("/avaliacao/cadastrarAvaliacaoBra", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
 
-            console.log(`
-        Partida: ${partida}
-        Comentário: ${comentario}
-        Nota: ${notaSelecionada}
-    `)
+        body: JSON.stringify({
+
+            dataPartidaServer: partida,
+            adversarioServer: comentario,
+            notaPartidaServer: notaSelecionada
+
+        }),
+    })
+
+    .then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            alert("Avaliação enviada com sucesso!");
+
+            setTimeout(() => {
+                window.location.href = "dashboard.html";
+            }, 1000);
+
+        } else {
+
+            throw "Houve um erro ao tentar realizar a avaliação!";
+
         }
-    }
+
+    })
+
+    .catch(function (erro) {
+
+        console.log(`#ERRO: ${erro}`);
+
+    });
+
+}
 </script>

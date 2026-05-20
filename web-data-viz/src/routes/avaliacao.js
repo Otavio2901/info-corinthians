@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-var usuarioController = require("../controllers/usuarioController");
+var usuarioController = require("../controllers/avaliacaoController");
 
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 router.post("/cadastrarAvaliacaoBra", function (req, res) {
@@ -15,3 +15,4 @@ router.post("/cadastrarAvaliacaoCdb", function (req, res) {
 
 
 module.exports = router;
+

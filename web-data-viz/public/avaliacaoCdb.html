@@ -154,16 +154,49 @@ function cadastrar() {
             alert("Selecione uma avaliação sobre a partida da Copa do Brasil")
             return
         }
-        else {
-            alert("Avaliação enviada com sucesso!")
-              setTimeout(() => {
-            window.location.href = "dashboard.html";
-          }, "1000");
-            console.log(`
-        Partida: ${partida}
-        Comentário: ${comentario}
-        Nota: ${notaSelecionada}
-    `)
+
+    // FETCH
+
+    fetch("/avaliacao/cadastrarAvaliacaoCdb", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+
+            dataPartidaServer: partida2,
+            adversarioServer: comentario2,
+            notaPartidaServer: notaSelecionada
+
+        }),
+    })
+
+    .then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            alert("Avaliação enviada com sucesso!");
+
+            setTimeout(() => {
+                window.location.href = "dashboard.html";
+            }, 1000);
+
+        } else {
+
+            throw "Houve um erro ao tentar realizar a avaliação!";
+
         }
-    }
+
+    })
+
+    .catch(function (erro) {
+
+        console.log(`#ERRO: ${erro}`);
+
+    });
+
+}
 </script>
