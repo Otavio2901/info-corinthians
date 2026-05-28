@@ -165,5 +165,57 @@ function cadastrar() {
         Nota: ${notaSelecionada}
     `)
         }
+        cadastrarAvaliacaoCdb();
     }
+    function cadastrarAvaliacaoCdb() {
+
+    var dataAvaliacao = input_dataPartida.value;
+    // var adversario = input_adversario.value;
+    let comentario = txt_comentario.value
+    let fkUsuario = sessionStorage.idUsuario;
+    var notaPartida = input_notaPartida.value;
+    var fkCopaDoBrasil = 1;
+
+    fetch("/avaliacao/cadastrarAvaliacaoCdb", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+
+            dataAvaliacaoServer: dataAvaliacao,
+            // adversarioServer: adversario,
+            fkCopaDoBrasilServer: fkCopaDoBrasil,
+            notaPartidaServer: notaPartida,
+            comentarioServer: comentario,
+            fkUsuarioServer: fkUsuario,
+        }),
+    })
+
+    .then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            div_mensagem.innerHTML =
+                "Avaliação cadastrada com sucesso!";
+
+            limparFormulario();
+
+        } else {
+
+            throw "Houve um erro ao tentar realizar a avaliação!";
+
+        }
+    })
+
+    .catch(function (resposta) {
+
+        console.log(`#ERRO: ${resposta}`);
+
+    });
+
+    return false;
+}
 </script>

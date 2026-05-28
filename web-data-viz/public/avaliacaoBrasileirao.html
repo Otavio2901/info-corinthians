@@ -92,37 +92,76 @@
         </div>
 </body>
 </html>
-<script>function cadastrar() {
+<script>
 
-        let partida = select_partida.value
+function cadastrar() {
+    let partida = select_partida.value
+    let comentario_1 = comentario1.value;
+    let avaliacao_brasileirao = select_avaliacao_copa.value;
 
-        let comentario_1 = comentario1.value
 
-        let avaliacao_brasileirao = select_avaliacao_copa.value
-
-        if (partida == "") {
-            alert("Selecione uma partida do Brasileirão")
-            return
-        }
-        if (comentario_1.trim() == "") {
-            alert("Digite um comentário da partida do Brasileirão Selecionada")
-            return
-        }
-        if (avaliacao_brasileirao == "") {
-            alert("Selecione uma avaliação sobre a partida da Copa do Brasil")
-            return
-        }
-        else {
-            alert("Avaliação enviada com sucesso!")
-              setTimeout(() => {
-            window.location.href = "dashboard.html";
-          }, "1000");
-
-            console.log(`
-        Partida: ${partida}
-        Comentário: ${comentario}
-        Nota: ${notaSelecionada}
-    `)
-        }
+    if (partida == "") {
+        alert("Selecione uma partida do Brasileirão");
+        return; 
     }
+    if (comentario_1.trim() == "") {
+        alert("Digite um comentário da partida do Brasileirão Selecionada");
+        return;
+    }
+    if (avaliacao_brasileirao == "") {
+        alert("Selecione uma avaliação sobre a partida da Copa do Brasil");
+        return;
+    }
+
+    console.log(`
+        Partida: ${partida}
+        Comentário: ${comentario_1}      
+        Nota: ${avaliacao_brasileirao}   
+    `); 
+
+    cadastrarAvaliacaoCdb();
+}
+
+function cadastrarAvaliacaoCdb() {
+
+    var dataAvaliacao = select_partida.value;
+    // var adversario = select_adversario.value;
+    var notaPartida = select_avaliacao_copa.value;
+    var fkbrasileirao = 1;
+    var fkUsuario = sessionStorage.getItem("ID_USUARIO")    
+    var comentario = comentario1.value
+
+
+    fetch("/avaliacao/cadastrarAvaliacaoCdb", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+            dataAvaliacaoServer: dataAvaliacao,
+            // adversarioServer: adversario,
+            fkBrasileiraoServer: fkbrasileirao,
+            notaPartidaServer: notaPartida,
+            comentarioServer: comentario,
+            fkUsuarioServer: fkUsuario,
+        }),
+    })
+    .then(function (resposta) {
+        if (resposta.ok) {
+            alert("Avaliação enviada com sucesso!"); 
+            setTimeout(() => {
+                window.location.href = "dashboard.html"; 
+            }, 1000); 
+        } else {
+            throw "Houve um erro ao tentar realizar a avaliação!";
+        }''
+    })
+    .catch(function (erro) {
+        console.log(`#ERRO: ${erro}`);
+        alert("Erro ao enviar avaliação. Tente novamente."); 
+    });
+
+    return false;
+}
 </script>
