@@ -53,43 +53,43 @@
 
                     <option value="">Selecione</option>
 
-                    <option value="30/04/2025 - Grêmio Novo Horizontino - Jogo Ida">
+                    <option value="1">
                         30/04/2025 - Grêmio Novo Horizontino - Jogo Ida
                     </option>
 
-                    <option value="21/05/2025 - Grêmio Novo Horizontino - Jogo Volta">
+                    <option value="2">
                         21/05/2025 - Grêmio Novo Horizontino - Jogo Volta
                     </option>
 
-                    <option value="30/07/2025 - Palmeiras - Jogo Ida">
+                    <option value="3">
                         30/07/2025 - Palmeiras - Jogo Ida
                     </option>
 
-                    <option value="06/08/2025 - Palmeiras - Jogo Volta">
+                    <option value="4">
                         06/08/2025 - Palmeiras - Jogo Volta
                     </option>
 
-                    <option value="27/08/2025 - Athletico Paranaense - Jogo Ida">
+                    <option value="5">
                         27/08/2025 - Athletico Paranaense - Jogo Ida
                     </option>
 
-                    <option value="10/09/2025 - Athletico Paranaense - Jogo Volta">
+                    <option value="6">
                         10/09/2025 - Athletico Paranaense - Jogo Volta
                     </option>
 
-                    <option value="10/12/2025 - Cruzeiro - Jogo Ida">
+                    <option value="7">
                         10/12/2025 - Cruzeiro - Jogo Ida
                     </option>
 
-                    <option value="14/12/2025 - Cruzeiro - Jogo Volta">
+                    <option value="8">
                         14/12/2025 - Cruzeiro - Jogo Volta
                     </option>
 
-                    <option value="17/12/2025 - Vasco - Jogo Ida">
+                    <option value="9">
                         17/12/2025 - Vasco - Jogo Ida
                     </option>
 
-                    <option value="21/12/2025 - Vasco - Jogo Volta">
+                    <option value="10">
                         21/12/2025 - Vasco - Jogo Volta
                     </option>
 
@@ -160,21 +160,22 @@ function cadastrar() {
             window.location.href = "dashboard.html";
           }, "1000");
             console.log(`
-        Partida: ${partida}
-        Comentário: ${comentario}
-        Nota: ${notaSelecionada}
+        Partida: ${partida2}
+        Comentário: ${comentario2}
+        Nota: ${avaliacao_copaDoBrasil}
     `)
+    cadastrarAvaliacaoCdb();
         }
-        cadastrarAvaliacaoCdb();
     }
     function cadastrarAvaliacaoCdb() {
 
-    var dataAvaliacao = input_dataPartida.value;
+    // var dataAvaliacao = input_dataPartida.value;
     // var adversario = input_adversario.value;
     let comentario = txt_comentario.value
-    let fkUsuario = sessionStorage.idUsuario;
-    var notaPartida = input_notaPartida.value;
-    var fkCopaDoBrasil = 1;
+    var fkUsuario = sessionStorage.getItem("ID_USUARIO")   
+    var notaPartida = select_avaliacao_copaBrasil.value;
+    var fkCopaDoBrasil = select_partida2.value;
+    console.log(fkCopaDoBrasil)
 
     fetch("/avaliacao/cadastrarAvaliacaoCdb", {
         method: "POST",
@@ -183,7 +184,7 @@ function cadastrar() {
         },
         body: JSON.stringify({
 
-            dataAvaliacaoServer: dataAvaliacao,
+            // dataAvaliacaoServer: dataAvaliacao,
             // adversarioServer: adversario,
             fkCopaDoBrasilServer: fkCopaDoBrasil,
             notaPartidaServer: notaPartida,

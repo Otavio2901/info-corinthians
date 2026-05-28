@@ -48,21 +48,24 @@
             <div class="card">
 
                 <h2>Total de Avaliações</h2>
-
+                <p id="msg_total_avaliacoes">Teste</p>
             </div>
 
             <div class="card">
 
-                <h2>Média das Notas</h2>
-
+                <h2>Nota que mais apareceu</h2>
+                <p id="msg_media_notas">Teste</p>
             </div>
 
             <div class="card">
 
                 <h2>Jogador Favorito</h2>
-
+                <p id="msg_jogador_favorito">Teste</p>
             </div>
 
+        </div>
+        <div class="grafico">
+            <canvas id="grafico"></canvas>
         </div>
     </div></div>
     </div>
@@ -70,11 +73,33 @@
 </body>
 
 </html>
-<canvas id="grafico"></canvas>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
+
+    fetch("/dashboard/kpis/avaliacoes")
+    .then((resposta) => resposta.json())
+    .then((resposta) => {
+        msg_total_avaliacoes.innerHTML = resposta[0].total;
+    });
+
+      fetch("/dashboard/kpis/mediaNota")
+    .then((resposta) => resposta.json())
+    .then((resposta) => {
+        msg_media_notas.innerHTML = resposta[0].notaPartida;
+        console.log(resposta);
+    });
+
+      fetch("/dashboard/kpis/jogadorFavorito")
+    .then((resposta) => resposta.json())
+    .then((resposta) => {
+        msg_jogador_favorito.innerHTML = resposta[0].jogador;
+    });
+          fetch("/dashboard/grafico/DadosDashboard")
+    .then((resposta) => resposta.json())
+    .then((resposta) => 
+    {});
 
     const ctx = document.getElementById('grafico');
 
@@ -93,7 +118,7 @@
             datasets: [{
                 label: 'Resultados',
 
-                data: [30, 25, 20, 15, 10],   
+                data: [0],   
             
             
             backgroundColor: [
@@ -109,7 +134,8 @@
         },
 
         options: {
-            responsive: true
+            responsive: true,
+            maintainAspectRatio: false
         }
     });
 

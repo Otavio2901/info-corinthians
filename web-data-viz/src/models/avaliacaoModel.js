@@ -18,12 +18,12 @@ function cadastrarAvaliacaoCdb(fkCopaDoBrasil, fkBrasileirao, fkUsuario, notaPar
     if (fkCopaDoBrasil) {
         instrucaoSql = `
             INSERT INTO avaliacao (fkCopaDoBrasil, notaPartida, fkUsuario, dataAvaliacao, comentario)
-            VALUES ('${fkCopaDoBrasil}', '${notaPartida}', '${fkUsuario}', '${dataAvaliacao}', '${comentario}');
+            VALUES ('${fkCopaDoBrasil}', '${notaPartida}', '${fkUsuario}', CURRENT_TIMESTAMP(), '${comentario}');
         `;
     } else if (fkBrasileirao) {
         instrucaoSql = `
             INSERT INTO avaliacao (fkBrasileirao, notaPartida, fkUsuario, dataAvaliacao, comentario)
-            VALUES ('${fkBrasileirao}', '${notaPartida}', '${fkUsuario}', '${dataAvaliacao}', '${comentario}');
+            VALUES ('${fkBrasileirao}', '${notaPartida}', '${fkUsuario}', CURRENT_TIMESTAMP(), '${comentario}');
         `;
     }
 
