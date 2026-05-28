@@ -10,7 +10,7 @@ function buscarKpiNotaPartidas(req, res){
 function buscarKpiJogador(req, res){
     dashboardModel.jogadorFavorito().then((dados) => res.json(dados));
 }
-function buscarDadosDashboard(res, req){
+function buscarDadosDashboard(req, res){
     dashboardModel.DadosDashboard().then((dados) => res.json(dados));
 }
 module.exports = {

@@ -36,6 +36,15 @@ function DadosDashboard(){
         GROUP BY notaPartida
         ORDER BY quantidade DESC;
     `;
+
+    return database.executar(instrucaoSql);
+} 
+function filtro_dados_dashboard(dataPartida){
+    var instrucaoSql = `
+    select * from vw_dados
+    where dataPartida = "${dataPartida}";
+    `
+    return database.executar(instrucaoSql);
 }
 
 

@@ -98,45 +98,61 @@
     });
           fetch("/dashboard/grafico/DadosDashboard")
     .then((resposta) => resposta.json())
-    .then((resposta) => 
-    {});
+    .then((resposta) => { 
+        console.log(resposta);
 
-    const ctx = document.getElementById('grafico');
+        // const total =   
 
-    new Chart(ctx, {
-        type: 'pie',
+        const ctx = document.getElementById('grafico');
 
-        data: {
-            labels: [
-                'Muito Bom',
-                'Bom',
-                'Mediana',
-                'Ruim',
-                'Muito Ruim'
-            ],
+        let nota_partida = []
+        let quantidade = []
 
-            datasets: [{
-                label: 'Resultados',
+            for(let i = 0; i < resposta.length; i++){
+                nota_partida[i] = resposta[i].notaPartida
+                quantidade[i] = resposta[i].quantidade
+            }
 
-                data: [0],   
+            console.log(quantidade)
+            console.log(nota_partida)
             
-            
-            backgroundColor: [
-            '#00C853', // Muito Bom
-            '#64DD17', // Bom
-            '#FFD600', // Mediana
-            '#FF6D00', // Ruim
-            '#D50000'  // Muito Ruim
-            ],
+        new Chart(ctx, {
+            type: 'pie',
 
-                borderWidth: 1
-            }]
-        },
+            data: {
+                labels: [
+                    'Muito Bom',
+                    'Bom',
+                    'Mediana',
+                    'Ruim',
+                    'Muito Ruim'
+                ],
 
-        options: {
-            responsive: true,
-            maintainAspectRatio: false
-        }
+                datasets: [{
+                    label: 'Resultados',
+
+                    data: quantidade,   
+                
+                
+                backgroundColor: [
+                '#00C853', // Muito Bom
+                '#64DD17', // Bom
+                '#FFD600', // Mediana
+                '#FF6D00', // Ruim
+                '#D50000'  // Muito Ruim
+                ],
+
+                    borderWidth: 1
+                }]
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
     });
+
+   
 
 </script>
