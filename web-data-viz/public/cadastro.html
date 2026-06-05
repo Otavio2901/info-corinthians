@@ -51,22 +51,24 @@ function cadastrar() {
 
     div_mensagem.innerHTML = "";
 
-    if (nome == "" || email == "" || senha == "" || jogador == "") {
+    if (nome.trim() == "" || email.trim() == "" || senha.trim() == '' || jogador.trim() == "") {
         div_mensagem.style.color = "red";
         div_mensagem.innerHTML = "⚠️ Preencha todos os campos para continuar!";
+        return false;
     } 
-    else if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+    if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
         div_mensagem.style.color = "red";
         div_mensagem.innerHTML = "⚠️ Por favor, insira um e-mail válido.";
+        return false;
     } 
-    else if (senha.length < 6) {
+    if (senha.length < 6) {
         div_mensagem.style.color = "red";
         div_mensagem.innerHTML = "⚠️ A senha deve ter pelo menos 6 caracteres.";
+        return false;
     } 
     else {
         div_mensagem.style.color = "green";
         div_mensagem.innerHTML = `✅ Cadastro realizado! Bem-vindo ao bando de loucos, ${nome}!`;
-        
     }
 
     fetch("/usuarios/cadastrar", {

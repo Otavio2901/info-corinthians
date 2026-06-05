@@ -18,17 +18,6 @@ function mediaNota() {
     return database.executar(instrucaoSql);
 }
 
-function jogadorFavorito() {
-    var instrucaoSql = `
-        SELECT jogador, COUNT(*) AS votos
-        FROM usuario
-        WHERE jogador IS NOT NULL
-        GROUP BY jogador
-        ORDER BY votos DESC
-        LIMIT 1;
-    `;
-    return database.executar(instrucaoSql);
-}
 function DadosDashboard(){
         var instrucaoSql = `
         SELECT notaPartida, COUNT(*) AS quantidade
@@ -47,10 +36,18 @@ function filtro_dados_dashboard(dataPartida){
     return database.executar(instrucaoSql);
 }
 
+function jogadorFavoritoUsuario(idUsuario){
+    var instrucaoSql = `
+    select * from usuario
+    where idUsuario = "${idUsuario}";
+    `
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
     totalAvaliacoes,
     mediaNota,
-    jogadorFavorito,
+    jogadorFavoritoUsuario,
     DadosDashboard
 };

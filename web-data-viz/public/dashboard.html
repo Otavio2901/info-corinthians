@@ -23,6 +23,10 @@
             </div>
 
             <div class="menu_botao">
+                
+                <a href="dashboard.html">
+                    <button onclick="inicio()">Dashboard</button>
+                </a>
 
                 <a href="avaliacao.html">
                     <button onclick="avaliacao()">Avaliação</button>
@@ -47,19 +51,19 @@
 
             <div class="card">
 
-                <h2>Total de Avaliações</h2>
+                <h2>Total de Avaliações:</h2>
                 <p id="msg_total_avaliacoes">Teste</p>
             </div>
 
             <div class="card">
 
-                <h2>Nota que mais apareceu</h2>
+                <h2>Nota que mais apareceu:</h2>
                 <p id="msg_media_notas">Teste</p>
             </div>
 
             <div class="card">
 
-                <h2>Jogador Favorito</h2>
+                <h2>Jogador Favorito:</h2>
                 <p id="msg_jogador_favorito">Teste</p>
             </div>
 
@@ -77,82 +81,60 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-
     fetch("/dashboard/kpis/avaliacoes")
     .then((resposta) => resposta.json())
     .then((resposta) => {
-        msg_total_avaliacoes.innerHTML = resposta[0].total;
+        msg_total_avaliacoes.innerHTML = ` ${resposta[0].total}`
     });
 
-      fetch("/dashboard/kpis/mediaNota")
+fetch("/dashboard/kpis/mediaNota")
     .then((resposta) => resposta.json())
     .then((resposta) => {
         msg_media_notas.innerHTML = resposta[0].notaPartida;
-        console.log(resposta);
     });
 
-      fetch("/dashboard/kpis/jogadorFavorito")
+
+var idUsuario = sessionStorage.getItem("ID_USUARIO");
+
+fetch(`/dashboard/kpis/jogadorFavoritoUsuario/${idUsuario}`)
     .then((resposta) => resposta.json())
     .then((resposta) => {
         msg_jogador_favorito.innerHTML = resposta[0].jogador;
     });
-          fetch("/dashboard/grafico/DadosDashboard")
+
+fetch("/dashboard/grafico/DadosDashboard")
     .then((resposta) => resposta.json())
-    .then((resposta) => { 
-        console.log(resposta);
+    .then((resposta) => {
+        const traducao = {
+            "Ótimo":  { label: "Muito Bom", cor: "#00C853" },
+            "Bom":        { label: "Bom",        cor: "#64DD17" },
+            "Regular":    { label: "Regular",    cor: "#FFD600" },
+            "Ruim":       { label: "Ruim",       cor: "#FF6D00" },
+            "Horrível": { label: "Horrível",   cor: "#D50000" },
+        };
 
-        // const total =   
+        let labels = [], quantidade = [], cores = [];
 
-        const ctx = document.getElementById('grafico');
+        for (let i = 0; i < resposta.length; i++) {
+            let nota = resposta[i].notaPartida;
+            let info = traducao[nota];
+            labels.push(info ? info.label : nota);
+            cores.push(info ? info.cor : "#999999");
+            quantidade.push(resposta[i].quantidade);
+        }
 
-        let nota_partida = []
-        let quantidade = []
-
-            for(let i = 0; i < resposta.length; i++){
-                nota_partida[i] = resposta[i].notaPartida
-                quantidade[i] = resposta[i].quantidade
-            }
-
-            console.log(quantidade)
-            console.log(nota_partida)
-            
-        new Chart(ctx, {
+        new Chart(document.getElementById('grafico'), {
             type: 'pie',
-
             data: {
-                labels: [
-                    'Muito Bom',
-                    'Bom',
-                    'Mediana',
-                    'Ruim',
-                    'Muito Ruim'
-                ],
-
+                labels: labels,
                 datasets: [{
                     label: 'Resultados',
-
-                    data: quantidade,   
-                
-                
-                backgroundColor: [
-                '#00C853', // Muito Bom
-                '#64DD17', // Bom
-                '#FFD600', // Mediana
-                '#FF6D00', // Ruim
-                '#D50000'  // Muito Ruim
-                ],
-
+                    data: quantidade,
+                    backgroundColor: cores,
                     borderWidth: 1
                 }]
             },
-
-            options: {
-                responsive: true,
-                maintainAspectRatio: false
-            }
+            options: { responsive: true, maintainAspectRatio: false }
         });
     });
-
-   
-
 </script>

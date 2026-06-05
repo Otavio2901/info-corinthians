@@ -13,9 +13,9 @@ router.get("/kpis/avaliacoes", function (req, res) {
 router.get("/kpis/mediaNota", function (req, res) {
     dashboardController.buscarKpiNotaPartidas(req, res);
 })
-router.get("/kpis/jogadorFavorito", function (req, res) {
-    dashboardController.buscarKpiJogador(req, res);
-})
+router.get("/kpis/jogadorFavoritoUsuario/:idUsuario", function (req, res) {
+    dashboardController.jogadorFavoritoUsuario(req, res);
+});
 router.get("/grafico/DadosDashboard", function (req, res) {
     dashboardController.buscarDadosDashboard(req, res);
 })
